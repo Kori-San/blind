@@ -8,7 +8,7 @@ public class MenuSelection : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()

@@ -7,6 +7,7 @@ public class PlayerMouvement : MonoBehaviour
     
     private Rigidbody2D rb;
     private UnityEngine.Rendering.Universal.Light2D blind_light;
+    private GameObject game_manager;
     private GameObject princess;
 
     private float start_distance;
@@ -14,12 +15,13 @@ public class PlayerMouvement : MonoBehaviour
 
     private int min_light_radius = 3;
     private bool light_lock = false; 
+    private bool jump_lock = false; 
 
     // Start is called before the first frame update
     private void Start()
     {
-        GameObject originalGameObject = GameObject.Find("GameManager");
-        princess = originalGameObject.transform.GetChild(0).gameObject;
+        game_manager = GameObject.Find("GameManager");
+        princess = game_manager.transform.GetChild(0).gameObject;
 
         blind_light = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         rb = GetComponent<Rigidbody2D>(); 
@@ -30,7 +32,7 @@ public class PlayerMouvement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!light_lock)
+        if (!light_lock && !game_manager.GetComponent<GameManager>().is_paused)
         {
             curr_distance = Vector3.Distance(this.transform.position, princess.transform.position); 
             blind_light.pointLightOuterRadius -= (start_distance - curr_distance) * 0.025f;
@@ -44,9 +46,20 @@ public class PlayerMouvement : MonoBehaviour
         float dirX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(dirX * 7f, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !jump_lock)
         {
             rb.velocity = new Vector2(rb.velocity.x, 14f);
+            jump_lock = true;
         }
     }
+
+    void OnCollisionEnter2D (Collision2D collision)
+    {
+        /* Checking if the player is on the ground. */
+        if (collision.contacts[0].point.y < transform.position.y)
+        {
+            jump_lock = false;
+        }
+    }
+
 }
