@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PrincessTouch : MonoBehaviour
 {
@@ -8,7 +9,16 @@ public class PrincessTouch : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Princess"))
         {
-            Debug.Log("Collision");
+            int next_scene = SceneManager.GetActiveScene().buildIndex + 1;
+            int max_scene = SceneManager.sceneCountInBuildSettings - 1;
+            if (next_scene <= max_scene)
+            {
+                SceneManager.LoadScene(next_scene);
+            }
+            else
+            { 
+                SceneManager.LoadScene(0);
+            }
         }
     }
 }
