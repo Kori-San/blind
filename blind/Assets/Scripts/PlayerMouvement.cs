@@ -15,7 +15,8 @@ public class PlayerMouvement : MonoBehaviour
 
     private int min_light_radius = 3;
     private bool light_lock = false; 
-    private bool jump_lock = false; 
+    private int curr_jump = 3; 
+    private int max_jump = 3; 
 
     // Start is called before the first frame update
     private void Start()
@@ -46,10 +47,10 @@ public class PlayerMouvement : MonoBehaviour
         float dirX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(dirX * 7f, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && !jump_lock)
+        if (Input.GetButtonDown("Jump") && curr_jump > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, 14f);
-            jump_lock = true;
+            curr_jump--;
         }
     }
 
@@ -58,7 +59,7 @@ public class PlayerMouvement : MonoBehaviour
         /* Checking if the player is on the ground. */
         if (collision.contacts[0].point.y < transform.position.y)
         {
-            jump_lock = false;
+            curr_jump = max_jump;
         }
     }
 
