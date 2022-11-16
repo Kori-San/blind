@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
         pause_menu.SetActive(true);       
     }
 
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void BackToMainMenu()
     {
         SceneManager.LoadScene(0);

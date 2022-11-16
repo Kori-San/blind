@@ -9,12 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4bc7a00f91adef841ab0f709bff8995d
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/Tutorial/Tutorial.unity
+    guid: 0ccd5c5d33c7338428d6ee0b7a5a70fd
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/BetweenSkyAndEarth.unity
+    path: Assets/Scenes/Tutorial/Tutorial 2.unity
+    guid: 3ab6d72b2f4057842bca2413ba1fc38e
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial 3.unity
+    guid: f76b788963e4907408398eab5b1e1bcf
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial 4.unity
+    guid: 701925f4338217546aaecf11dca71c65
+  - enabled: 1
+    path: Assets/Scenes/Levels/BetweenSkyAndEarth.unity
     guid: 4cb774bdc536259479d16391eeca0769
   - enabled: 1
-    path: Assets/Scenes/GoldMine.unity
+    path: Assets/Scenes/Levels/GoldMine.unity
     guid: c0324953cfbf34d42b298a8ed5f935ad
   m_configObjects: {}
