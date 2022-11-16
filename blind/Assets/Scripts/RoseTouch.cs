@@ -17,7 +17,7 @@ public class RoseTouch : MonoBehaviour
         {
             Destroy(collision.gameObject);
             light_mechanic.light_lock = false;
-            light_mechanic.blind_light.pointLightOuterRadius = 100;
+            light_mechanic.blind_light.pointLightOuterRadius = 50;
         }
     }
 }
