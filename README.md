@@ -1,2 +1,2 @@
-# blind_the_game
+# Blind The Game
 Blind is a game about love and tryhard.
